@@ -1,4 +1,11 @@
-local x, y, secAngle, minAngle, hourAngle
+local x, y, secAngle, minAngle, hourAngle, timeStr, timeStrFont
+
+function getTimeStr(hour, min, sec)
+    local hs = hour < 10 and string.format('0%s', hour) or hour
+    local ms = min < 10 and string.format('0%s', min) or min
+    local ss = sec < 10 and string.format('0%s', sec) or sec
+    return string.format('%s : %s : %s', hs, ms, ss)
+end
 
 function love.load()
     x = love.graphics.getWidth() / 2
@@ -6,6 +13,7 @@ function love.load()
     secAngle = 0
     minAngle = 0
     hourAngle = 0
+    timeStrFont = love.graphics.newFont(30)
 end
 
 function love.update(dt)
@@ -13,6 +21,7 @@ function love.update(dt)
     local hour = time.hour
     local min = time.min
     local sec = time.sec
+    timeStr = getTimeStr(hour, min, sec)
 
     hourAngle = ((hour / 12) * math.pi * 2)
     minAngle = ((min / 60) * math.pi * 2)
@@ -39,4 +48,5 @@ function love.draw()
     drawRotateRect(x, y, 250, 2, secAngle)
     drawRotateRect(x, y, 200, 4, minAngle)
     drawRotateRect(x, y, 100, 6, hourAngle)
+    love.graphics.print(timeStr, timeStrFont, love.graphics.getWidth() / 2 - (timeStrFont:getWidth(timeStr) / 2), love.graphics.getHeight() - timeStrFont:getHeight() - 10)
 end
