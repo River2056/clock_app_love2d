@@ -9,13 +9,13 @@ end
 
 function getWeekdayStr(wday)
     t = {}
-    t[0] = "Sun"
-    t[1] = "Mon"
-    t[2] = "Tue"
-    t[3] = "Wed"
-    t[4] = "Thur"
-    t[5] = "Fri"
-    t[6] = "Sat"
+    t[0] = "SUN"
+    t[1] = "MON"
+    t[2] = "TUE"
+    t[3] = "WED"
+    t[4] = "THUR"
+    t[5] = "FRI"
+    t[6] = "SAT"
     return t[wday]
 end
 
@@ -67,13 +67,10 @@ function love.draw()
     love.graphics.print(
         timeStr,
         timeStrFont,
-        love.graphics.getWidth() / 2 - (timeStrFont:getWidth(timeStr) / 2) - 100,
+        love.graphics.getWidth() / 2 - (timeStrFont:getWidth(timeStr) / 2),
         love.graphics.getHeight() - timeStrFont:getHeight() - 10
     )
-    love.graphics.print(
-        day,
-        timeStrFont,
-        love.graphics.getWidth() / 2 - (timeStrFont:getWidth(timeStr) / 2) + 100,
-        love.graphics.getHeight() - timeStrFont:getHeight() - 10
-    )
+    love.graphics.setColor(0, 0, 0)
+    love.graphics.print(day, timeStrFont, love.graphics.getWidth() / 2 - (timeStrFont:getWidth(day) / 2), 10)
+    love.graphics.setColor(1, 1, 1)
 end
