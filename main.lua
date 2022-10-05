@@ -34,7 +34,7 @@ function love.update(dt)
     local hour = time.hour
     local min = time.min
     local sec = time.sec
-    day = getWeekdayStr(time.wday)
+    day = "-- " .. getWeekdayStr(time.wday) .. " --"
     timeStr = getTimeStr(hour, min, sec)
 
     hourAngle = ((hour / 12) * math.pi * 2)
