@@ -9,13 +9,13 @@ end
 
 function getWeekdayStr(wday)
     t = {}
-    t[0] = "SUN"
-    t[1] = "MON"
-    t[2] = "TUE"
-    t[3] = "WED"
-    t[4] = "THUR"
-    t[5] = "FRI"
-    t[6] = "SAT"
+    t[1] = "SUN"
+    t[2] = "MON"
+    t[3] = "TUE"
+    t[4] = "WED"
+    t[5] = "THUR"
+    t[6] = "FRI"
+    t[7] = "SAT"
     return t[wday]
 end
 
